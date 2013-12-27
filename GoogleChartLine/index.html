@@ -1,0 +1,54 @@
+<!--
+You are free to copy and use this sample in accordance with the terms of the
+Apache license (http://www.apache.org/licenses/LICENSE-2.0.html)
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title>
+      Google Visualization API Sample
+    </title>
+    <script type="text/javascript" src="//www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load('visualization', '1', {packages: ['corechart']});
+    </script>
+    <script type="text/javascript">
+      function drawVisualization() {
+        // Create and populate the data table.
+        var data = google.visualization.arrayToDataTable([
+          ['x', '11/22', '11/25', '12/4', '12/6', '12/13', '12/25'],
+          ['125',70,35,15,20,15,15],
+          ['250',85,50,20,35,20,15],
+          ['500',85,55,30,30,25,15],
+          ['1000',95,70,75,65,65,65],
+          ['2000',100,70,70,65,70,65],
+          ['4000',110,75,65,70,65,65],
+          ['8000',100,95,95,75,65,65]
+        ]);
+
+        
+        var options = {
+          title: 'Right Ear Hearing',
+          curveType: 'none',
+          width: 500, 
+          height: 400,
+          hAxis: {title: 'Frequency (hZ)'},
+          vAxis: {title: 'Volume (db)'},
+          vAxis: {maxValue: 120},
+          vAxis: {direction: -1} 
+        };
+      
+        // Create and draw the visualization.
+        new google.visualization.LineChart(document.getElementById('visualization')).
+            draw(data,options);
+      }
+
+      google.setOnLoadCallback(drawVisualization);
+    </script>
+  </head>
+  <body style="font-family: Arial;border: 0 none;">
+    <div id="visualization" style="width: 600px; height: 400px;"></div>
+  </body>
+</html>
